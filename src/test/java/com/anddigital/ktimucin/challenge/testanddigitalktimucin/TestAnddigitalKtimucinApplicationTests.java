@@ -44,7 +44,7 @@ public class TestAnddigitalKtimucinApplicationTests {
 						.and().extract().response().asString();
 			assertTrue(!phones.equalsIgnoreCase(""));
 			
-			
+			System.out.println("---------------All Phones----------"+phones);
 		}
 
 }
