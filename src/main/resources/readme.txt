@@ -14,3 +14,8 @@ all phone numbers--> GET /phones
 all phone numbers for a single customer --> GET /customer/{id}/phones
 
 activate a phone number	--> POST phone/activate  
+
+API Contaract is on
+http://localhost:8080/v2/api-docs
+SWAGGER
+http://localhost:8080/swagger-ui.html
