@@ -77,6 +77,7 @@ public class TestAnddigitalKtimucinApplicationTests {
 				
 			}
 			
+			//404 expected.
 			@Test
 			public void testGetPhonesOfWrongCustomerEndPoint() {
 				RestAssured.baseURI="http://localhost:8080";
@@ -89,7 +90,47 @@ public class TestAnddigitalKtimucinApplicationTests {
 				
 			}
 			
+			//Activate
+			@Test
+			public void testActivatePhone() {
+				RestAssured.baseURI="http://localhost:8080";
+				String phone="7777-123456";
+				String activated= RestAssured.given().
+						body(phone)
+						.post("phones/activate").
+						then().assertThat().statusCode(200).and().extract().response().asString();;
+						assertTrue(activated.equalsIgnoreCase(phone));
+						
+						System.out.println("---------------Phones activated----------"+activated);
+				
+				
+			}
 			
+			//Expect 404
+			@Test
+			public void testWrongPhone() {
+				RestAssured.baseURI="http://localhost:8080";
+				String phone="7777-1233456";
+				RestAssured.given().
+						body(phone)
+						.post("phones/activate").
+						then().log().all().assertThat().statusCode(404);
+						
+				
+			}
 			
+			//Expect 400
+			@Test
+			public void testAlreadyActivatePhone() {
+				RestAssured.baseURI="http://localhost:8080";
+				String phone="7777-111111";
+				RestAssured.given().
+						body(phone)
+						.post("phones/activate").
+						then().log().all().assertThat().statusCode(400);
+						
+				
+				
+			}
 
 }

@@ -3,12 +3,13 @@ package com.anddigital.ktimucin.challenge.testanddigitalktimucin.phones.exceptio
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(HttpStatus.NOT_FOUND)
-public class CustomerNotFoundException extends RuntimeException{
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+public class PhoneAlreadyActiveException extends RuntimeException {
 
-	public CustomerNotFoundException(String errorMessage) {
+	public PhoneAlreadyActiveException(String errorMessage) {
 		super(errorMessage);
 	}
+	
 
 	/**
 	 * 
