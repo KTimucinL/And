@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.springframework.stereotype.Component;
 
+import com.anddigital.ktimucin.challenge.testanddigitalktimucin.phones.exception.CustomerNotFoundException;
 import com.anddigital.ktimucin.challenge.testanddigitalktimucin.phones.helper.PhonesDataHelper;
 
 @Component
@@ -27,6 +28,11 @@ public class PhoneDAO {
 	}
 
 	public List<String> retrievePhonesofCustomer(String id) {
+	
+		//Check whether any phones for customer exists.
+		if(!phonesOfCustomers.containsKey(id))
+			throw new CustomerNotFoundException();
+		
 		return phonesOfCustomers.get(id);
 	}
 

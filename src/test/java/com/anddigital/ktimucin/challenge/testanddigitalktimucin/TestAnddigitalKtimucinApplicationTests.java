@@ -76,5 +76,20 @@ public class TestAnddigitalKtimucinApplicationTests {
 				System.out.println("---------------All Phones for customer id 1----------"+phonesOf1);
 				
 			}
+			
+			@Test
+			public void testGetPhonesOfWrongCustomerEndPoint() {
+				RestAssured.baseURI="http://localhost:8080";
+				
+				RestAssured.given().
+						pathParam("id", "XX")
+						.get("customers/{id}/phones").
+						then().assertThat().statusCode(404);
+				
+				
+			}
+			
+			
+			
 
 }
