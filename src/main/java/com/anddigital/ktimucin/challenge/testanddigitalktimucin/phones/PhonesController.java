@@ -1,5 +1,6 @@
 package com.anddigital.ktimucin.challenge.testanddigitalktimucin.phones;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,9 @@ public class PhonesController {
 	}
 	
 	@GetMapping("customers/{id}/phones")
-	public void retrieveAllPhones(@PathVariable String id) {
-		return;
+	public List<String> retrieveAllPhones(@PathVariable String id) {
+		return phoneDAO.retrievePhonesofCustomer (id);
+		
 	}
 	
 }

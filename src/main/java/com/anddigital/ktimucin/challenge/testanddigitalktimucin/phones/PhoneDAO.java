@@ -1,5 +1,6 @@
 package com.anddigital.ktimucin.challenge.testanddigitalktimucin.phones;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,9 +18,16 @@ public class PhoneDAO {
 	
 	private static Map<String,Boolean> phones =PhonesDataHelper.retrievePhones();
 	
+	//HashMap for customers and phones
+	private static Map<String,List<String>> phonesOfCustomers =PhonesDataHelper.retrievePhonesofCustomers();
+	
 	public Set<String> retrieveAllPhones() {
 		return phones.keySet();
 		
+	}
+
+	public List<String> retrievePhonesofCustomer(String id) {
+		return phonesOfCustomers.get(id);
 	}
 
 }

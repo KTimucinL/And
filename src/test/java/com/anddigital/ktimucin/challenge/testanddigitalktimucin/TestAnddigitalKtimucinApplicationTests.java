@@ -21,7 +21,7 @@ public class TestAnddigitalKtimucinApplicationTests {
 	public void contextLoads() {
 	}
 	
-	//Just check whether /phones endpoint is up.
+	//check whether /phones endpoint is up.
 	@Test
 	public void testGetPhonesEndPoint() {
 		
@@ -32,7 +32,7 @@ public class TestAnddigitalKtimucinApplicationTests {
 		
 		
 	}
-	//Just check whether get phones is returning empty or not.
+	//check whether get phones is returning empty or not.
 	//Aim is create DAO and return proper phones
 		@Test
 		public void testGetPhonesAList() {
@@ -47,7 +47,7 @@ public class TestAnddigitalKtimucinApplicationTests {
 			System.out.println("---------------All Phones----------"+phones);
 		}
 		
-		//Just check whether get phones of customer is up or not.
+		//check whether get phones of customer is up or not.
 			@Test
 			public void testGetPhonesOfCustomer() {
 				
@@ -57,6 +57,23 @@ public class TestAnddigitalKtimucinApplicationTests {
 						pathParam("id", "1")
 						.get("customers/{id}/phones").
 							then().assertThat().statusCode(200);
+				
+			}
+			
+			//check whether get phones is returning empty or not.
+			//Aim is create DAO and return proper phones
+			@Test
+			public void testGetPhonesOfCustomerList() {
+				
+				RestAssured.baseURI="http://localhost:8080";
+				
+				String phonesOf1 = RestAssured.given().when().
+						pathParam("id", "1")
+						.get("customers/{id}/phones").
+							then().assertThat().statusCode(200).and().extract().response().asString();
+				assertTrue(!phonesOf1.equalsIgnoreCase(""));
+				
+				System.out.println("---------------All Phones for customer id 1----------"+phonesOf1);
 				
 			}
 
